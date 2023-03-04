@@ -8,7 +8,6 @@
 // CRUD - fetch()
 
 function getAllProducts() {
-
     fetch('https://dummyjson.com/products')
         .then((response) => {
             return response.json();
@@ -17,16 +16,16 @@ function getAllProducts() {
 
             const ol = document.createElement('ol');
 
-            result.products.forEach((product) => {
+            result.products.forEach((x) => {
                 const li = document.createElement('li');
 
                 const label = document.createElement('label');
-                label.innerHTML = product.brand + ' / ' + product.title;
+                label.innerHTML = x.brand + ' / ' + x.title + ' PRICE: ' + x.price;
 
                 const button = document.createElement('button');
                 button.innerHTML = 'DELETE';
                 button.addEventListener('click', () => {
-                    deleteProduct(product.id);
+                    deleteProduct(x.id);
                     li.remove();
                 });
 
@@ -59,5 +58,3 @@ function deleteProduct(id) {
         console.log(result);
     })
 }
-
-getAllProducts()
